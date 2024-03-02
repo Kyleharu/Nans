@@ -5,7 +5,8 @@ module.exports = {
     name: "legend",
     version: 2.0,
     author: "OtinXSandip",
-    longdescription: " ai",
+    description: "ai",
+    role: 0,
     category: "ai",
     guide: {
       en: "{p}{n} <Query>",
@@ -13,35 +14,30 @@ module.exports = {
   },
   onStart: async function ({ message, usersData, event, api, args }) {
     try {
+      if (event.type === "message_reply" && event.messageReply.attachments && event.messageReply.attachments[0].type === "photo") {
+        const photoUrl = encodeURIComponent(event.messageReply.attachments[0].url);
+        const lado = args.join(" ");
+        const url = `https://sandipbaruwal.onrender.com/gemini2?prompt=${encodeURIComponent(lado)}&url=${photoUrl}`;
+        const response = await axios.get(url);
+
+        message.reply(response.data.answer);
+        return;
+      }
+
       const id = event.senderID;
       const userData = await usersData.get(id);
       const name = userData.name;
 
       const ment = [{ id: id, tag: name }];
       const prompt = args.join(" ");
-
-      if (prompt.includes("draw")) {
-        const [promptText, model] = args.join(' ').split('|').map((text) => text.trim());
-        const puti = model || "5";
-        const baseURL = `https://sandyapi.otinxsandeep.repl.co/jeevan?prompt=${promptText}&model=${puti}`;
-
-        message.reply({
-          body: `✅`,
-          attachment: await global.utils.getStreamFromURL(baseURL)
-        });
-        return; // Exit the function after handling the "draw" case
-      }
-
       const encodedPrompt = encodeURIComponent(prompt);
-      api.setMessageReaction("⏰", event.messageID, () => { }, true);
-      const res = await axios.get(`https://sdxl.otinxsandeep.repl.co/gpt?prompt=${encodedPrompt}`);
+      api.setMessageReaction("⏳", event.messageID, () => { }, true);
+      const res = await axios.get(`https://sandipbaruwal.onrender.com/gemini?prompt=${encodedPrompt}`);
       const result = res.data.answer;
-
+      
       api.setMessageReaction("✅", event.messageID, () => { }, true);
       message.reply({
-        body: `${name} ${result}
-
-you can reply for continue chatting 🩷`,
+        body: `${name}, ${result}`,
         mentions: ment,
       }, (err, info) => {
         global.GoatBot.onReply.set(info.messageID, {
@@ -54,7 +50,6 @@ you can reply for continue chatting 🩷`,
       console.error("Error:", error.message);
     }
   },
-
   onReply: async function ({ message, event, Reply, args, api, usersData }) {
     try {
       const id = event.senderID;
@@ -63,29 +58,14 @@ you can reply for continue chatting 🩷`,
 
       const ment = [{ id: id, tag: name }];
       const prompt = args.join(" ");
-
-      if (prompt.includes("draw")) {
-        const [promptText, model] = args.join(' ').split('|').map((text) => text.trim());
-        const puti = model || "5";
-        const baseURL = `https://sandyapi.otinxsandeep.repl.co/jeevan?prompt=${promptText}&model=${puti}`;
-
-        message.reply({
-          body: `✅`,
-          attachment: await global.utils.getStreamFromURL(baseURL)
-        });
-        return; // Exit the function after handling the "draw" case
-      }
-
       const encodedPrompt = encodeURIComponent(prompt);
-      api.setMessageReaction("⏰", event.messageID, () => { }, true);
-      const res = await axios.get(`https://sdxl.otinxsandeep.repl.co/gpt?prompt=${encodedPrompt}`);
+      api.setMessageReaction("⏳", event.messageID, () => { }, true);
+      const res = await axios.get(`https://sandipbaruwal.onrender.com/gemini?prompt=${encodedPrompt}`);
       const result = res.data.answer;
-
+     
       api.setMessageReaction("✅", event.messageID, () => { }, true);
       message.reply({
-        body: `${name} ${result}
-
-you can reply for continue chatting 🩷`,
+        body: `${name}, ${result}`,
         mentions: ment,
       }, (err, info) => {
         global.GoatBot.onReply.set(info.messageID, {
