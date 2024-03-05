@@ -14,7 +14,7 @@ module.exports = {
   config: {
     name: "cornhub",// api from jarif
     aliases: [],
-    author: "kshitiz",
+    author: "kshiiz",
     version: "2.0",
     cooldowns: 5,
     role: 2,
