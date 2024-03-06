@@ -5,7 +5,7 @@ module.exports = {
 	config: {
 		name: "gay",
 		version: "1.0",
-		author: "@tas33n",
+		author: "",
 		countDown: 1,
 		role: 0,
 		shortDescription: "find gay",
