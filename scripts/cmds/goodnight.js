@@ -14,7 +14,7 @@ module.exports = {
  onChat: async function({ event, message, getLang }) {
  if (event.body && event.body.toLowerCase() === "good night") {
  return message.reply({
- body: "good night😴",
+ body: "good night🐸",
  attachment: await global.utils.getStreamFromURL("https://i.ibb.co/mDF63mw/image.gif")
  });
  }
