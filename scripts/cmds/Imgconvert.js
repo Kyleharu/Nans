@@ -27,7 +27,7 @@ module.exports = {
       axios.get(apiUrl)
         .then(response => {
           const text = response.data.responses[0].textAnnotations[0].description;
-          message.reply({ body: `🐸: ${saua}\n\nText: ${text}` });
+          message.reply({ body: `🐸Text: ${text}` });
         })
         .catch(error => {
           message.reply(error.message);
@@ -35,5 +35,7 @@ module.exports = {
     } catch (error) {
       message.reply(error.message);
     }
+  }
+};    }
   }
 };
