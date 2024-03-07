@@ -8,7 +8,7 @@ module.exports = {
     countDown: 5,
     role: 0,
     sortDescription: {
-      en: 'any Image to Tex convert'
+      en: 'any Image to Text convert'
     },
     category: "Fun",
   },
@@ -27,7 +27,7 @@ module.exports = {
       axios.get(apiUrl)
         .then(response => {
           const text = response.data.responses[0].textAnnotations[0].description;
-          message.reply({ body: `Here is ImageLink: ${puti}\n\nText: ${text}` });
+          message.reply({ body: `Text: ${text}` });
         })
         .catch(error => {
           message.reply(error.message);
