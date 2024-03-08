@@ -3,10 +3,10 @@ module.exports = {
 		name: "cud",
     aliases: ["baby"],
 		version: "1.0",
-		author: "otineeeeeyyyyyyyyyyyy",
-		role: 0,
+		author: "Siam",
+		role: 2,
 		category: "fun",
-    shortDescription: "Flirt With Lines",
+    shortDescription: "murgi cudar machine",
 		longDescription: "",
 		guide: {
 			vi: "Not Available",
