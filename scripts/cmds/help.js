@@ -3,9 +3,9 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ĊŸBËŖ ​​ÄŖMŸ]";
+const doNotDelete = "[Siam islam]";
 /** 
-* @author ĊŸBËŖ ​​ÄŖMŸ
+* @author Ntkhang
 * @author: do not delete it
 * @message if you delete or edit it you will get a global ban
 */
