@@ -4,7 +4,7 @@ module.exports = {
   config: {
     name: "imgvt",
     version: "0.0",
-    author: "Siam",
+    author: "milan",
     countDown: 5,
     role: 0,
     sortDescription: {
