@@ -7,7 +7,7 @@ module.exports = {
     role: 0,
     author: "OtinXSandip",
     countDown: 5,
-    longDescription: "Art images",
+    longDescription: "Art imagees",
     category: "AI",
     guide: {
       en: "${pn} reply to an image with a prompt and choose model 1 - 52"
