@@ -1,16 +1,16 @@
-const axios = require('axios');
-
 module.exports = {
   config: {
-    name: "imgvt",
-    version: "0.0",
-    author: "milan",
-    countDown: 5,
+    name: 'imgvt',
+    version: '1.0.69',
+    author: 'Siam the frog>🐸',
+    countDown: 0,
     role: 0,
-    sortDescription: {
-      en: 'any Image to Text convert'
+    category: 'media',
+    shortDescription: 'img to text', 
+    longDescription: 'Any lang image convert to same lang text',
+    guide: {
+      en: '{pn} ',
     },
-    category: "Fun",
   },
   onStart: async function ({ api, args, message, event }) {
     try {
@@ -19,7 +19,7 @@ module.exports = {
       const puti = lado.data.uploaded?.image;
 
       if (!puti) {
-        throw new Error('Image not uploaded');
+        throw new Error('img de machikney');
       }
 
       const apiUrl = `https://milanbhandari.onrender.com/ocr?imageUrl=${puti}`;
@@ -27,7 +27,7 @@ module.exports = {
       axios.get(apiUrl)
         .then(response => {
           const text = response.data.responses[0].textAnnotations[0].description;
-          message.reply({ body: `Text: ${text}` });
+          message.reply({ body: `\n\n_______________\nLado: ${text}\n_______________` });
         })
         .catch(error => {
           message.reply(error.message);
