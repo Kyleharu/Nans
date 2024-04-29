@@ -11,7 +11,7 @@ module.exports = {
 
     author: 'Siam the frog>🐸',
 
-    countDown: 10,
+    countDown: 20,
 
     role: 0,
 
