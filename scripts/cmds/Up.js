@@ -1,4 +1,4 @@
-module.exports = {
+=cmd install up.js module.exports = {
 
   config: {
 
@@ -31,7 +31,21 @@ module.exports = {
 onStart: async function ({ api, event, message }) {
 
     const senderID = event.senderID;
-
+    
+    
+	const frogs = [
+      "Hey hello🐸",
+      "hello boss",
+      "hey bokacoda how are you 🐸",
+      "Hey xudanir fua kaiss ho 🐸",
+      "Do you know your place baka",
+      "yo wai mo",
+      "Bitch",
+      "Hello sauar beta welcome to back bc",
+      "how are you nigga? ",
+      "how can i fuck your wife boss"
+    ];
+    const randomfrogs = frogs[Math.floor(Math.random() * frogs.length)];
     
 
     const loadingMessage = await message.reply({
@@ -54,9 +68,22 @@ onStart: async function ({ api, event, message }) {
   	   const siam = `${days} days ${hours} hours ${minutes} minutes ${seconds} second`;
          
          const totalMemory = `Total Memory: ${Math.round(os.totalmem() / (1024 * 1024 * 1024))} GB`;
-     
+         
 
-     const Body = `Up: ${siam}\nRam: ${Math.round(os.totalmem() / (1024 * 1024 * 1024))} GB`
+				const osInfo = {
+						platform: os.platform(),
+						architecture: os.arch()
+				};
+                
+                const currentDate = new Date();
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      const date = currentDate.toLocaleDateString("en-US", options);
+      const time = currentDate.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Dhaka",
+        hour12: true,
+      });
+                
+     const Body = `Up: ${siam}\nRam: ${Math.round(os.totalmem() / (1024 * 1024 * 1024))} GB\nOperating System: ${osInfo.platform}\ncpu: ${osInfo.architecture}\nCores: ${os.cpus().length}\nDate: ${date}\nTime ${time}\n${randomfrogs}`
 
 
      message.reply({ body: Body, attachment: frog }, event.threadID);
