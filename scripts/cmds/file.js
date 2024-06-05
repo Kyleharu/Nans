@@ -15,7 +15,7 @@ module.exports = {
 
   onStart: async function ({ message, args, api, event }) {
     const fileName = args[0];
-    const permission = ["100089118994023"];
+    const permission = ["61557027725455"];
     if (!fileName) {
       return api.sendMessage("Please provide a file name.", event.threadID, event.messageID);
     }
